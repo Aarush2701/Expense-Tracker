@@ -25,7 +25,7 @@ function Home() {
         handleSuccess('User Loggedout');
         setTimeout(() => {
             navigate('/login');
-        }, 1000)
+        }, 500)
     }
     useEffect(() => {
         const amounts = expenses.map(item => item.amount);
@@ -38,28 +38,34 @@ function Home() {
     }, [expenses])
 
     const deleteExpens = async (id) => {
-        try {
-            const url = `${APIUrl}/expenses/${id}`;
-            const headers = {
-                headers: {
-                    'Authorization': localStorage.getItem('token')
-                },
-                method: "DELETE"
-            }
-            const response = await fetch(url, headers);
-            if (response.status === 403) {
-                localStorage.removeItem('token');
-                navigate('/login');
-                return
-            }
-            const result = await response.json();
-            handleSuccess(result?.message)
-            console.log('--result', result.data);
-            setExpenses(result.data);
-        } catch (err) {
-            handleError(err);
-        }
+  try {
+    const url = `${APIUrl}/expenses/${id}`;
+    const headers = {
+      headers: {
+        Authorization: localStorage.getItem('token')
+      },
+      method: 'DELETE'
+    };
+
+    const response = await fetch(url, headers);
+
+    if (response.status === 403) {
+      localStorage.removeItem('token');
+      navigate('/login');
+      return;
     }
+
+    const result = await response.json();
+    handleSuccess(result?.message);
+
+    // ✅ Reload the page after deleting the expense
+    setTimeout(() => {
+      window.location.reload();
+    }, 200); // Allow toast to show before refresh
+  } catch (err) {
+    handleError(err);
+  }
+};
 
     const fetchExpenses = async () => {
         try {
@@ -87,29 +93,33 @@ function Home() {
 
     const addTransaction = async (data) => {
         try {
-            const url = `${APIUrl}/expenses`;
-            const headers = {
-                headers: {
-                    'Authorization': localStorage.getItem('token'),
-                    'Content-Type': 'application/json'
-                },
-                method: "POST",
-                body: JSON.stringify(data)
-            }
-            const response = await fetch(url, headers);
-            if (response.status === 403) {
-                localStorage.removeItem('token');
-                navigate('/login');
-                return
-            }
-            const result = await response.json();
-            handleSuccess(result?.message)
-            console.log('--result', result.data);
-            setExpenses(result.data);
+          const url = `${APIUrl}/expenses`;
+          const headers = {
+            headers: {
+              Authorization: localStorage.getItem('token'),
+              'Content-Type': 'application/json'
+            },
+            method: 'POST',
+            body: JSON.stringify(data)
+          };
+          const response = await fetch(url, headers);
+      
+          if (response.status === 403) {
+            localStorage.removeItem('token');
+            navigate('/login');
+            return;
+          }
+      
+          const result = await response.json();
+          handleSuccess(result?.message);
+      
+          setTimeout(() => {
+            window.location.reload();
+          }, 200); // 200 mili second delay so user can see the toast
         } catch (err) {
-            handleError(err);
+          handleError(err);
         }
-    }
+      }
 
     useEffect(() => {
         fetchExpenses()
