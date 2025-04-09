@@ -15,6 +15,7 @@ html,
 body{
   height: 100vh;
   width: 100vw;
+  overflow-x: hidden;
 }
 
 body{
@@ -196,4 +197,100 @@ button{
   justify-content: center;
   font-weight: 700;
   
+}
+
+@media (max-width: 410px) {
+  body {
+    flex-direction: column;
+    align-items: center;
+    height: auto;
+    padding: 10px;
+  }
+
+  .App {
+    flex-direction: column;
+    gap: 20px;
+    padding: 0 10px;
+    width: 100%;
+    height: auto;
+  }
+
+  .container {
+    width: 100%;
+    max-width: 100%;
+    padding: 16px;
+    box-shadow: none;
+    border-radius: 5px;
+  }
+
+  .container input {
+    font-size: 16px;
+    padding: 8px;
+  }
+
+  .container input::placeholder {
+    font-size: 10px;
+  }
+
+  label {
+    font-size: 16px;
+  }
+
+  .piechart {
+    width: 100%;
+    height: auto;
+    padding: 0;
+  }
+
+  .piechartdiv {
+    width: 100%;
+    padding: 0;
+    margin-top: 10px;
+  }
+
+  .piecharthead {
+    font-size: 20px;
+  }
+
+  .amounts-container {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    font-size: 16px;
+  }
+
+  .expense-list {
+    height: auto;
+    max-height: 300px;
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  .expense-item {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px;
+    width: 100%;
+    font-size: 14px;
+  }
+
+  .delete-button {
+    margin-top: 6px;
+    font-size: 14px;
+    padding: 4px 6px;
+  }
+
+  .logbtn {
+    margin-left: 0;
+    margin-top: 8px;
+  }
+
+  .txnloghead {
+    font-size: 18px;
+    text-align: center;
+    padding: 10px;
+  }
+  .nodeelement{
+    height: 60vh;
+  }
 }
