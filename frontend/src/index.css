@@ -252,13 +252,13 @@ button{
   }
 
   .piechart {
-    width: 100%;
+    width: 80%;
     height: auto;
     padding: 0;
   }
 
   .piechartdiv {
-    width: 100%;
+    width: 80%;
     padding: 0;
     margin-top: 10px;
   }
@@ -316,6 +316,6 @@ button{
     font-size: 18px;
   }
   .nodeelement{
-    height: 60vh;
+    height: 40vh;
 }
 }
