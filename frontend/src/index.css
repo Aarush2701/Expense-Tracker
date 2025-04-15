@@ -91,10 +91,6 @@ button{
   margin-top: 20px;
   overflow-y: auto;
   height: 80vh;
-  /* display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  height: 100vh; */
 }
 
 .expense-item {
@@ -252,14 +248,14 @@ button{
   }
 
   .piechart {
-    width: 80%;
-    height: auto;
+    /* width: 80%;
+    height: auto; */
     padding: 0;
   }
 
   .piechartdiv {
-    width: 80%;
-    padding: 0;
+    /* width: 80%;
+    padding: 0; */
     margin-top: 10px;
   }
 
