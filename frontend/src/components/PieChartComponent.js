@@ -99,7 +99,7 @@ function PieChartComponent() {
     const fetchSummary = async () => {
       try {
         const token = localStorage.getItem('token');
-        const res = await axios.get('/expenses/category-summary', {
+        const res = await axios.get(`${process.env.REACT_APP_API_URL}/expenses/category-summary`, {
           headers: {
             Authorization: token,
           },
